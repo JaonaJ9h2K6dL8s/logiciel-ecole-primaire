@@ -1,0 +1,156 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  min-height: 100%;
+  width: 100%;
+  /* Scroll natif du viewport : le body défile naturellement (desktop + mobile).
+     Les seules zones à scroll interne sont volontaires (chat, lecteur de livre). */
+  overflow-x: hidden;
+  font-family: 'Inter', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+/* Selection */
+::selection {
+  background-color: rgba(46, 125, 111, 0.2);
+  color: inherit;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Pulse animation for live indicator */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ===== Mascottes animées (étape 22) — keyframes 100 % locales ===== */
+
+@keyframes mascot-idle {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-3px) scale(1.02); }
+}
+
+@keyframes mascot-bounce {
+  0%, 100% { transform: translateY(0); }
+  35% { transform: translateY(-16px); }
+  55% { transform: translateY(0); }
+  70% { transform: translateY(-6px); }
+  85% { transform: translateY(0); }
+}
+
+@keyframes mascot-cheer {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-12px) rotate(-5deg); }
+  50% { transform: translateY(0) rotate(0deg); }
+  75% { transform: translateY(-12px) rotate(5deg); }
+}
+
+@keyframes mascot-think {
+  0%, 100% { transform: rotate(0deg); }
+  40% { transform: rotate(-4deg); }
+  70% { transform: rotate(2deg); }
+}
+
+@keyframes mascot-read {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+@keyframes mascot-dance {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  20% { transform: translateX(-8px) rotate(-6deg); }
+  40% { transform: translateX(8px) rotate(6deg); }
+  60% { transform: translateX(-6px) rotate(-4deg); }
+  80% { transform: translateX(6px) rotate(4deg); }
+}
+
+@keyframes mascot-walk {
+  0%, 100% { transform: translateX(-14px); }
+  50% { transform: translateX(14px); }
+}
+
+@keyframes mascot-arm-wave {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-38deg); }
+  75% { transform: rotate(24deg); }
+}
+
+@keyframes mascot-arm-sway {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-12deg); }
+}
+
+@keyframes mascot-book-sway {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(2px) rotate(-1.5deg); }
+}
+
+@keyframes mascot-ears-twitch {
+  0%, 100% { transform: rotate(0deg); }
+  30% { transform: rotate(-3deg); }
+  70% { transform: rotate(3deg); }
+}
+
+/* Étincelle décorative de la bannière mascotte (discrète, très légère). */
+@keyframes mascot-sparkle {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.35); opacity: 0.55; }
+}
+
+/* Animations du corps entier */
+.mascot-anim-idle { animation: mascot-idle 3.2s ease-in-out infinite; transform-origin: 50% 90%; }
+.mascot-anim-bounce { animation: mascot-bounce 1.6s ease-in-out infinite; transform-origin: 50% 95%; }
+.mascot-anim-cheer { animation: mascot-cheer 1.8s ease-in-out infinite; transform-origin: 50% 95%; }
+.mascot-anim-think { animation: mascot-think 3.6s ease-in-out infinite; transform-origin: 50% 95%; }
+.mascot-anim-read { animation: mascot-read 4s ease-in-out infinite; transform-origin: 50% 95%; }
+.mascot-anim-dance { animation: mascot-dance 2.4s ease-in-out infinite; transform-origin: 50% 95%; }
+.mascot-anim-walk { animation: mascot-walk 3s ease-in-out infinite; }
+
+/* Animations des parties du corps */
+.mascot-part-arm-wave { animation: mascot-arm-wave 1.4s ease-in-out infinite; transform-box: fill-box; transform-origin: 20% 90%; }
+.mascot-part-arm { animation: mascot-arm-sway 3.2s ease-in-out infinite; transform-box: fill-box; transform-origin: 20% 90%; }
+.mascot-part-book { animation: mascot-book-sway 4s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 100%; }
+.mascot-part-ears { animation: mascot-ears-twitch 4.2s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 100%; }
+
+/* Respect des préférences système : aucun mouvement si l'utilisateur
+   demande à limiter les animations. */
+@media (prefers-reduced-motion: reduce) {
+  [class^='mascot-anim-'],
+  [class*=' mascot-anim-'],
+  .mascot-part-arm-wave,
+  .mascot-part-arm,
+  .mascot-part-book,
+  .mascot-part-ears {
+    animation: none !important;
+  }
+}

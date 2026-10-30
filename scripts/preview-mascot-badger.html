@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Aperçu mascotte Blaireau</title>
+<style>
+  body { background: #f2f4f8; font-family: system-ui, sans-serif; display: flex; gap: 40px; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+  .card { background: #fff; border-radius: 12px; padding: 24px; box-shadow: 0 2px 10px rgba(0,0,0,.08); text-align: center; }
+  .mascot-part-arm-wave { animation: armwave 1.4s ease-in-out infinite; transform-box: fill-box; transform-origin: 20% 90%; }
+  .mascot-part-head { animation: bob 3.2s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 90%; }
+  @keyframes armwave { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(-22deg); } }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-1.5px); } }
+  p { margin: 8px 0 0; font-weight: 600; color: #333; }
+</style>
+</head>
+<body>
+<div class="card">
+  <!-- Géométrie identique à MascotCharacter.tsx (branche badger, wave) -->
+  <svg width="220" height="253" viewBox="0 0 120 138" role="img" aria-label="Mascotte Blaireau" style="overflow:visible">
+    <defs>
+      <radialGradient id="shadow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="rgba(31,36,48,0.30)"/>
+        <stop offset="70%" stop-color="rgba(31,36,48,0.10)"/>
+        <stop offset="100%" stop-color="rgba(31,36,48,0)"/>
+      </radialGradient>
+      <filter id="soft" x="-40%" y="-120%" width="180%" height="340%">
+        <feGaussianBlur stdDeviation="2.2"/>
+      </filter>
+    </defs>
+    <ellipse cx="60" cy="130" rx="32" ry="7" fill="url(#shadow)" filter="url(#soft)"/>
+    <!-- T-shirt rouge -->
+    <g>
+      <path d="M37 66 Q60 57 83 66 L85 98 Q60 106 35 98 Z" fill="#E23B3B" stroke="#2A2020" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M51 63 Q60 70 69 63" fill="none" stroke="#2A2020" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- Short bleu -->
+      <path d="M39 97 L81 97 L79 115 Q70 118 63 116 L60 108 L57 116 Q50 118 41 115 Z" fill="#3BA7E0" stroke="#2A2020" stroke-width="2.5" stroke-linejoin="round"/>
+    </g>
+    <!-- Bras gauche -->
+    <g>
+      <path d="M39 70 Q27 82 31 95" stroke="#2A2020" stroke-width="9" fill="none" stroke-linecap="round"/>
+      <circle cx="31" cy="95" r="5.5" fill="#2A2020"/>
+    </g>
+    <!-- Bras droit levé (salut) -->
+    <g class="mascot-part-arm-wave">
+      <path d="M82 68 Q95 58 94 44" stroke="#2A2020" stroke-width="9" fill="none" stroke-linecap="round"/>
+      <circle cx="94" cy="44" r="5.5" fill="#2A2020"/>
+    </g>
+    <!-- Jambes + baskets rouges -->
+    <g>
+      <path d="M50 112 L50 121" stroke="#2A2020" stroke-width="8" stroke-linecap="round"/>
+      <path d="M70 112 L70 121" stroke="#2A2020" stroke-width="8" stroke-linecap="round"/>
+      <path d="M41 126 Q41 119 48 119 L54 119 Q60 119 60 125 L60 127 Q50 132 41 127 Z" fill="#D6342C" stroke="#2A2020" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M60 126 Q60 119 67 119 L73 119 Q80 119 80 125 L80 127 Q70 132 60 127 Z" fill="#D6342C" stroke="#2A2020" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M42 126.5 Q50 130.5 59 126.5" stroke="#FFFFFF" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+      <path d="M61 126.5 Q70 130.5 79 126.5" stroke="#FFFFFF" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+      <ellipse cx="48" cy="122" rx="3" ry="1.6" fill="rgba(255,255,255,0.5)"/>
+      <ellipse cx="68" cy="122" rx="3" ry="1.6" fill="rgba(255,255,255,0.5)"/>
+    </g>
+    <!-- Tête -->
+    <g class="mascot-part-head">
+      <circle cx="34" cy="13" r="9" fill="#2A2020" stroke="#2A2020" stroke-width="2.5"/>
+      <circle cx="86" cy="13" r="9" fill="#2A2020" stroke="#2A2020" stroke-width="2.5"/>
+      <circle cx="60" cy="37" r="29" fill="#FBFAF4" stroke="#2A2020" stroke-width="2.5"/>
+      <path d="M50 9 Q36 21 39 41 Q40 52 50 54 Q46 34 55 11 Z" fill="#2A2020"/>
+      <path d="M70 9 Q84 21 81 41 Q80 52 70 54 Q74 34 65 11 Z" fill="#2A2020"/>
+      <circle cx="49" cy="37" r="5" fill="#2E7FD6" stroke="#101010" stroke-width="1.4"/>
+      <circle cx="71" cy="37" r="5" fill="#2E7FD6" stroke="#101010" stroke-width="1.4"/>
+      <circle cx="49" cy="37.5" r="2.2" fill="#101010"/>
+      <circle cx="71" cy="37.5" r="2.2" fill="#101010"/>
+      <circle cx="47.6" cy="35.2" r="1.5" fill="#FFFFFF"/>
+      <circle cx="69.6" cy="35.2" r="1.5" fill="#FFFFFF"/>
+      <ellipse cx="60" cy="46" rx="4.5" ry="3.2" fill="#1A1414"/>
+      <path d="M53 51 Q60 60 67 51" stroke="#1A1414" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+      <ellipse cx="60" cy="56.5" rx="4" ry="2.4" fill="#E23B3B"/>
+    </g>
+  </svg>
+  <p>Blaireau — animation « Saluer »</p>
+</div>
+</body>
+</html>

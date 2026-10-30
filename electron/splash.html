@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chargement...</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: transparent;
+      -webkit-app-region: drag;
+      user-select: none;
+    }
+    .container {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      border-radius: 20px;
+      padding: 50px 40px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      width: 420px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .logo {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+    h1 {
+      color: #e94560;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 5px;
+      letter-spacing: 1px;
+    }
+    .subtitle {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 13px;
+      margin-bottom: 35px;
+    }
+    .loader {
+      width: 200px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      margin: 0 auto 20px;
+      overflow: hidden;
+    }
+    .loader-bar {
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(90deg, #e94560, #0f3460, #e94560);
+      background-size: 200% 100%;
+      border-radius: 4px;
+      animation: loading 1.5s ease-in-out infinite, slide 2s ease-in-out infinite;
+    }
+    @keyframes loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    @keyframes slide {
+      0%, 100% { transform: translateX(-30%); }
+      50% { transform: translateX(200%); }
+    }
+    .status {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 12px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+    .version {
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 11px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">🛒</div>
+    <h1>Vente en Ligne</h1>
+    <p class="subtitle">Gestion des Ventes</p>
+    <div class="loader">
+      <div class="loader-bar"></div>
+    </div>
+    <p class="status">Démarrage de l'application...</p>
+    <p class="version">Version 1.0.0</p>
+  </div>
+</body>
+</html>

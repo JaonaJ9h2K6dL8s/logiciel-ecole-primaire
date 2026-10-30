@@ -1,0 +1,137 @@
+{
+  "name": "logiciel-scolaire",
+  "version": "0.1.0",
+  "private": true,
+  "main": "main.js",
+  "author": "Ã‰tablissement Scolaire",
+  "description": "Logiciel de gestion scolaire",
+  "packageManager": "npm@11.11.0",
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint --ignore-pattern .next/** --ignore-pattern build/** --ignore-pattern dist-electron-v12/** --ignore-pattern dist-electron-v14/** --ignore-pattern dist-electron-v15/** --ignore-pattern dist-electron-v16/** --ignore-pattern dist-electron-v22/** --ignore-pattern dist-electron-v23/** --ignore-pattern c/**",
+    "electron:dev": "concurrently \"npm run backend:dev\" \"next dev --turbopack -p 3099\" \"wait-on http://127.0.0.1:3099 && electron .\"",
+    "electron:rebuild-native": "electron-builder install-app-deps",
+    "electron:postbuild": "node scripts/organize-electron-output.js",
+    "electron:build": "next build && npm run electron:rebuild-native && node scripts/prepare-electron.js && cross-env npm_config_loglevel=silent npm_config_progress=false electron-builder --win",
+    "electron:build-only": "npm run electron:rebuild-native && node scripts/prepare-electron.js && cross-env npm_config_loglevel=silent npm_config_progress=false electron-builder --win",
+    "electron:build:signed": "node -e \"if (!process.env.CSC_LINK) { console.error('CSC_LINK manquant'); process.exit(1); } if (!process.env.CSC_KEY_PASSWORD) { console.error('CSC_KEY_PASSWORD manquant'); process.exit(1); }\" && next build && npm run electron:rebuild-native && node scripts/prepare-electron.js && cross-env npm_config_loglevel=silent npm_config_progress=false electron-builder --win --config.forceCodeSigning=true",
+    "electron:build:signed-only": "node -e \"if (!process.env.CSC_LINK) { console.error('CSC_LINK manquant'); process.exit(1); } if (!process.env.CSC_KEY_PASSWORD) { console.error('CSC_KEY_PASSWORD manquant'); process.exit(1); }\" && npm run electron:rebuild-native && node scripts/prepare-electron.js && cross-env npm_config_loglevel=silent npm_config_progress=false electron-builder --win --config.forceCodeSigning=true",
+    "backend:dev": "npm run dev --prefix backend",
+    "backend:build": "npm run build --prefix backend",
+    "backend:start": "npm run start --prefix backend"
+  },
+  "eslintIgnore": [
+    ".next/**",
+    "build/**",
+    "dist-electron-v12/**",
+    "dist-electron-v14/**",
+    "dist-electron-v15/**",
+    "dist-electron-v22/**",
+    "dist-electron-v23/**",
+    "c/**"
+  ],
+  "dependencies": {
+    "@emotion/cache": "^11.14.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^7.3.8",
+    "@mui/material": "^7.3.8",
+    "@mui/material-nextjs": "^9.0.1",
+    "@mui/x-charts": "^8.27.0",
+    "@mui/x-data-grid": "^8.27.1",
+    "@mui/x-date-pickers": "^8.27.0",
+    "@next/swc-wasm-nodejs": "^15.5.12",
+    "@next/swc-win32-x64-msvc": "^15.5.12",
+    "@types/file-saver": "^2.0.7",
+    "bcryptjs": "^3.0.3",
+    "caniuse-lite": "^1.0.30001750",
+    "chart.js": "^4.5.1",
+    "date-fns": "^4.1.0",
+    "file-saver": "^2.0.5",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^4.2.0",
+    "jspdf-autotable": "^5.0.7",
+    "jszip": "^3.10.1",
+    "next": "15.5.12",
+    "notistack": "^3.0.2",
+    "react": "19.1.0",
+    "react-chartjs-2": "^5.3.1",
+    "react-dom": "19.1.0",
+    "recharts": "^3.7.0",
+    "uuid": "^9.0.1",
+    "xlsx": "^0.18.5",
+    "zustand": "^5.0.11"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/uuid": "^10.0.0",
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
+    "electron": "^33.2.0",
+    "electron-builder": "^26.7.0",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.12",
+    "png-to-ico": "^3.0.1",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "wait-on": "^9.0.4"
+  },
+  "build": {
+    "appId": "com.ecole.scolaire.app",
+    "productName": "Logiciel Scolaire",
+    "asar": false,
+    "npmRebuild": false,
+    "directories": {
+      "output": "dist-electron-v40"
+    },
+    "files": [
+      "package.json",
+      "main.js",
+      "electron/**/*",
+      "build/standalone/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "build/standalone",
+        "to": "standalone"
+      }
+    ],
+    "win": {
+      "executableName": "Logiciel Scolaire",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "icon": "electron/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "electron/icon.ico",
+      "uninstallerIcon": "electron/icon.ico",
+      "installerHeaderIcon": "electron/icon.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Logiciel Scolaire"
+    }
+  }
+}

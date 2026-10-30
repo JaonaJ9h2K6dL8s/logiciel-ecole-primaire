@@ -1,0 +1,64 @@
+# Dépendances
+node_modules/
+backend/node_modules/
+
+# Builds
+.next/
+out/
+build/
+dist/
+backend/dist/
+dist-electron*/
+
+# Environnement
+.env
+.env.*
+!.env.example
+
+# Journaux et temporaires
+*.log
+*.tmp
+*.temp
+.cache/
+
+# Base de données locale / sauvegardes locales
+*.db
+*.sqlite
+*.db-shm
+*.db-wal
+
+# Instance MariaDB portable de développement (locale, non commitée)
+.tools/
+
+# Caches et runtimes locaux
+.npm-cache/
+.runtime-next/
+.dbg/
+.trae/
+
+# Données locales de l'ancien projet (répertoire de travail)
+data/
+runtime-login-test-data/
+test_db*.js
+test-db.js
+test_products.json
+
+# Artifacts d'installation Electron
+*.exe
+*.zip
+*.blockmap
+*.asar
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*.tsbuildinfo
+next-env.d.ts
+swchunks/
+_audit_*.txt
+_probe.*
+_download_*.ps1
